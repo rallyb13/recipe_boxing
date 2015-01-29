@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129181600) do
+ActiveRecord::Schema.define(version: 20150129190056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,21 +22,29 @@ ActiveRecord::Schema.define(version: 20150129181600) do
     t.datetime "updated_at"
   end
 
-  create_table "cookbook", force: :cascade do |t|
+  create_table "categories_recipes", force: :cascade do |t|
     t.integer  "category_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories_recipes", ["category_id"], name: "index_categories_recipes_on_category_id", using: :btree
+  add_index "categories_recipes", ["recipe_id"], name: "index_categories_recipes_on_recipe_id", using: :btree
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "element"
+  end
+
+  create_table "ingredients_recipes", force: :cascade do |t|
     t.integer  "ingredient_id"
     t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "cookbook", ["category_id"], name: "index_cookbook_on_category_id", using: :btree
-  add_index "cookbook", ["ingredient_id"], name: "index_cookbook_on_ingredient_id", using: :btree
-  add_index "cookbook", ["recipe_id"], name: "index_cookbook_on_recipe_id", using: :btree
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string "element"
-  end
+  add_index "ingredients_recipes", ["ingredient_id"], name: "index_ingredients_recipes_on_ingredient_id", using: :btree
+  add_index "ingredients_recipes", ["recipe_id"], name: "index_ingredients_recipes_on_recipe_id", using: :btree
 
   create_table "instructions", force: :cascade do |t|
     t.string  "step"
