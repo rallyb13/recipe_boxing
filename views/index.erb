@@ -1,0 +1,21 @@
+<h2>Welcome to your Ruby Recipe Box</h2>
+
+<form action="/categories" method="post">
+  <label for="name">Create a category</label>
+  <input type="text" name="name">
+  <button class="btn" type="submit">Add it!</button>
+</form>
+<hr>
+<form action="/recipes" method="post">
+  <% @categories.each() do |cat| %>
+    <br> <input type="checkbox" name="category_ids[]" value="<%= cat.id %>"> <%= cat.name %>
+    <a href="/category/<%= cat.id %>" class="badge"><%= cat.recipes().length() %></a>
+  <% end %>
+<br><br>
+  <label for="dish">Add a recipe</label>
+  <input type="text" name="dish" id="dish">
+  <label for="rating">Rate it!</label>
+  <input type="text" name="rating">
+
+  <button class="btn" type="submit">Add it!</button>
+</form>
