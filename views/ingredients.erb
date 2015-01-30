@@ -1,0 +1,20 @@
+<h3>Ingredients!</h3>
+
+<form action="/ingredients" method="post">
+  <label for="element">Add a new ingredient!</label>
+  <input type="text" name="element">
+  <button name="submit">Add it!</button>
+</form>
+<hr>
+<form action="/ingredient_add" method="post">
+  <select name="recipe_id"> <% @recipes.each() do |recipe| %>
+    <option value="<%= recipe.id %>"><%= recipe.dish %></option>
+    <% end %>
+  </select>
+  <% @ingredients.each() do |ingredient| %>
+    <br> <input type="checkbox" name="ingredient_ids[]" value="<%= ingredient.id %>">
+    <%= ingredient.element %>
+  <% end %>
+  <br><br>
+  <button name="submit" class="btn btn-lg btn-primary">Add 'em!</button>
+</form>

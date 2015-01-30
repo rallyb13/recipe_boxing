@@ -19,3 +19,9 @@
 
   <button class="btn" type="submit">Add it!</button>
 </form>
+<hr>
+<h2>5 Star Recipes!</h2>
+<% @five_star_recipes.each() do |recipe| %>
+  <br><a href="/recipe/<%= recipe.id %>"><%= recipe.dish() %></a>
+
+<% end %>

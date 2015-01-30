@@ -5,6 +5,12 @@ describe(Recipe) do
   it { should have_many(:instructions)}
   it { should have_and_belong_to_many(:ingredients)}
 
+  # it("will have a category") do
+  #   test_recipe1 = Recipe.create({:dish => "spaghetti", :rating => 3})
+  #   expect(Recipe.all()).to(eq([]))
+  # end
+  #can this be done??? cross-class validation
+
   it('will ensure that only a rating 1 through 5 is entered') do
     test_recipe1 = Recipe.create({:dish => "spaghetti", :rating => 3})
     test_recipe2 = Recipe.create({:dish => "blueberry pi", :rating => 6})

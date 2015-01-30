@@ -1,15 +1,15 @@
 <h1><%= @category.name() %></h1>
 
-<p> Recipes: </p>
+<h2>Recipes: </h2>
 <% @category.recipes().each() do |recipe| %>
-  <br><a href="/recipe/:id"><%= recipe.dish() %></a>
+  <br><a href="/recipe/<%= recipe.id %>"><%= recipe.dish() %></a>
     <% recipe.rating.to_i.times do  %>
     <span class="glyphicon glyphicon-star"></span>
     <% end %>
     <% 5.-(recipe.rating.to_i).times do  %>
     <span class="glyphicon glyphicon-star-empty"></span>
     <% end %>
-
-
-
 <% end %>
+
+<hr>
+<a href="/ingredients" class="btn btn-success">Add ingredients to a recipe above!</a>
